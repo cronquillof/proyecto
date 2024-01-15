@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Exclude, Transform } from 'class-transformer';
 import {
   IsEmail,
   IsNotEmpty,
@@ -8,6 +9,8 @@ import {
   IsString,
   IsStrongPassword,
 } from 'class-validator';
+
+import { Collaborator } from 'src/module/collaborator/entity/Collaborator.entity';
 
 export class ClientDto {
   @IsOptional()
@@ -25,4 +28,8 @@ export class ClientDto {
   @IsString()
   @IsStrongPassword()
   password: string;
+
+  @Exclude()
+  collaborator: Collaborator;
+  
 }
