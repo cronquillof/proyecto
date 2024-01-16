@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { Client } from 'src/module/client/entity/Client.entity';
+import { Client } from './entity/Client.entity';
 import { Not, Repository } from 'typeorm';
 import { RegisterAuthDto } from '../auth/dto/register-auth.dto';
 
@@ -16,6 +16,11 @@ export class ClientService {
     @InjectRepository(Client)
     private readonly clientRepository: Repository<Client>,
   ) {}
+  
+  async findAll(): Promise<Client[]> {
+    const client = await this.clientRepository.find();
+    return client;
+  }
 
   async findClientByEmail(email: string): Promise<Client> {
     const client = await this.clientRepository.findOne({

@@ -9,7 +9,10 @@ import {
 import { Collaborator } from 'src/module/collaborator/entity/Collaborator.entity';
 
 export class RegisterAuthDto {
-
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  fullname: string;
 
   @ApiProperty()
   @IsNotEmpty()
@@ -17,12 +20,14 @@ export class RegisterAuthDto {
   email: string;
 
   @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  dni: string;
+
+  @ApiProperty()
   @Transform(({ value }) => value.trim())
   @IsNotEmpty()
   @IsString()
   @IsStrongPassword()
   password: string;
-
-  @Exclude()
-  collaborator: Collaborator;
 }

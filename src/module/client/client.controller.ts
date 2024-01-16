@@ -24,6 +24,11 @@ export class ClientController {
     return await this.clienteService.findClientsDoctor();
   }
 
+  @Get('/')
+  async findAll() {
+    return await this.clienteService.findAll();
+  }
+
   @Get('/:email')
   @UseGuards(AuthGuard)
   async getClientByEmail(@Param('email') email: string) {

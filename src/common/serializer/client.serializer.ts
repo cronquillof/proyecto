@@ -6,6 +6,12 @@ export class ClientSerializer {
   id: number;
 
   @Expose()
+  fullname: string;
+
+  @Expose()
+  dni: string;
+
+  @Expose()
   email: string;
 
   @Expose()
